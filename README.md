@@ -62,7 +62,7 @@ You've successfully run and modified your React Native App. :partying_face:
 
 
 
-## Application screens - iOS
+# Application screens - iOS
 ![Simulator Screenshot - iPhone 15 - 2024-04-11 at 09 59 14](https://github.com/prateeksharmastpl/EpicPokeStore/assets/3941119/2950d7d9-b7c2-45df-8313-164751419097)
 ![Simulator Screenshot - iPhone 15 - 2024-04-11 at 09 59 21](https://github.com/prateeksharmastpl/EpicPokeStore/assets/3941119/807efdc5-c4aa-410a-9d51-c3415e5ff028)
 ![Simulator Screenshot - iPhone 15 - 2024-04-11 at 09 59 33](https://github.com/prateeksharmastpl/EpicPokeStore/assets/3941119/6bd1d70c-1655-4176-8f44-d6a57b014507)
@@ -71,7 +71,7 @@ You've successfully run and modified your React Native App. :partying_face:
 ![Simulator Screenshot - iPhone 15 - 2024-04-11 at 10 00 01](https://github.com/prateeksharmastpl/EpicPokeStore/assets/3941119/7dab10ee-b0e6-43ff-b06e-1a25824271bb)
 ![Simulator Screenshot - iPhone 15 - 2024-04-11 at 10 00 09](https://github.com/prateeksharmastpl/EpicPokeStore/assets/3941119/204594e9-c4a5-43e0-bb45-817b9e6c0670)
 
-## Application screens - Android
+# Application screens - Android
 ![Screenshot_1712848898](https://github.com/prateeksharmastpl/EpicPokeStore/assets/3941119/3bad9883-0812-4dda-95c1-3dd10ab0d58e)
 ![Screenshot_1712848914](https://github.com/prateeksharmastpl/EpicPokeStore/assets/3941119/ae81c340-b796-413c-bd81-f78d986c1c08)
 ![Screenshot_1712848928](https://github.com/prateeksharmastpl/EpicPokeStore/assets/3941119/51a9ced4-9d06-4727-89d5-76088ba67e59)
