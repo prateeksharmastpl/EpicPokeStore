@@ -6,18 +6,19 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
 >**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
 # Add below commands
-
-## using npm
+```bash
+# using npm
 npm install
 
-## OR using Yarn
+# OR using Yarn
 yarn install
 
 # Add pod
 npx pod-install
 
-## OR using this:
+# OR using this:
 cd ios && pod install
+```
 
 
 ## Step 1: Start the Metro Server
