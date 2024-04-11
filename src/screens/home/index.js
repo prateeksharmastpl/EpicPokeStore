@@ -1,49 +1,49 @@
-import React, { useEffect, useCallback, useMemo } from 'react';
+import React, {useEffect, useCallback, useMemo} from 'react';
 import {
   FlatList,
   SafeAreaView,
   StatusBar,
-  StyleSheet,
   useColorScheme,
   View,
-  Platform
 } from 'react-native';
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
-import { useNavigation } from '@react-navigation/native';
-import { useDispatch, useSelector } from 'react-redux';
-import { getAllProducts } from '../../redux/features/ProductsSlice';
-import { CONSTANTS } from "../../constants/urls"
-import { LocalString } from '../../constants/constantStrings'
-import ChildCard from "../../components/card"
-import Header from "../../components/header"
-import { getHomeStyles } from "./homeStyle";
-import { COLORS } from "../../constants/colors"
+import {useNavigation} from '@react-navigation/native';
+import {useDispatch, useSelector} from 'react-redux';
+import {getAllProducts} from '../../redux/features/ProductsSlice';
+import {CONSTANTS} from '../../constants/urls';
+import {LocalString} from '../../constants/constantStrings';
+import ChildCard from '../../components/card';
+import Header from '../../components/header';
+import {getHomeStyles} from './homeStyle';
+import {COLORS} from '../../constants/colors';
 
 function Home() {
   const isDarkMode = useColorScheme() === 'dark';
-  const styles = getHomeStyles(isDarkMode)
+  const styles = getHomeStyles(isDarkMode);
   const backgroundStyle = {
     backgroundColor: isDarkMode ? COLORS.darkPrimaryColor : COLORS.primaryColor,
   };
-  const { navigate } = useNavigation();
+  const {navigate} = useNavigation();
   const dispatch = useDispatch();
-  const { products } = useSelector(state => state.products);
+  const {products} = useSelector(state => state.products);
 
   useEffect(() => {
     dispatch(getAllProducts(30));
-  }, [])
+  }, [dispatch]);
 
   /* useCallback to handle the callback from the ChildCard component
-  ** it helps to handle the unwanted rerending 
-  */
-  const handleCardClick = useCallback((item) => e => {
-    navigate('ProductDetail', { Product: item })
-  }, []);
+   ** it helps to handle the unwanted rerending
+   */
+  const handleCardClick = useCallback(
+    item => e => {
+      navigate('ProductDetail', {Product: item});
+    },
+    [navigate],
+  );
 
   //handled the child card component with useMemo to handle the unwanted rendering
   const renderItem = useMemo(() => {
-    return ({ item }) => {
+    return ({item, index}) => {
       return (
         <ChildCard
           onPress={handleCardClick(item)}
@@ -51,22 +51,25 @@ function Home() {
           title={item.name}
           containerStyle={styles.pikaContainer}
           subContainerStyle={styles.subContainerStyle}
-          id={item.id + item.name}
+          id={item.id + item.name + index}
           titleStyle={styles.titleStyle}
           imageStyle={styles.pikaImg}
           showTitle={true}
         />
       );
     };
-  }, []);
+  }, [
+    handleCardClick,
+    styles.pikaContainer,
+    styles.pikaImg,
+    styles.subContainerStyle,
+    styles.titleStyle,
+  ]);
 
   const handleHeader = useMemo(() => {
-      return (
-        <Header
-        title={LocalString.appName}
-        showBadge={true}
-        showCart={true} />
-      );
+    return (
+      <Header title={LocalString.appName} showBadge={true} showCart={true} />
+    );
   }, []);
 
   return (
@@ -75,13 +78,12 @@ function Home() {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      <View
-        style={styles.constainer}>
+      <View style={styles.container}>
         {handleHeader}
         <FlatList
           data={products}
           numColumns={3}
-          keyExtractor={(item) => item.id + item.name}
+          keyExtractor={(item, index) => item.id + item.name + index}
           renderItem={renderItem}
         />
       </View>

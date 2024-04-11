@@ -11,11 +11,11 @@ const AppNavigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
-          <Stack.Group>
-            <Stack.Screen name="Home" component={Home} />
-            <Stack.Screen name="ProductDetail" component={ProductDetail} />
-            <Stack.Screen name="Cart" component={Cart} />
-          </Stack.Group>
+        <Stack.Group>
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="ProductDetail" component={ProductDetail} />
+          <Stack.Screen name="Cart" component={Cart} />
+        </Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>
   );

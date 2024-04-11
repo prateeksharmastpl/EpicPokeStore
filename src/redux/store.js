@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {persistReducer, persistStore} from 'redux-persist';
 import ProductsSlice from './features/ProductsSlice';
 import CartSlice from './features/CartSlice';
-import logger from 'redux-logger'
+import logger from 'redux-logger';
 
 //combine all reduces in to one
 const reducers = combineReducers({
@@ -24,7 +24,10 @@ const persistedReducer = persistReducer(persistConfig, reducers);
 const store = configureStore({
   reducer: persistedReducer,
   middleware: getDefaultMiddleware =>
-    getDefaultMiddleware({serializableCheck: false, immutableCheck: false}).concat(logger),
+    getDefaultMiddleware({
+      serializableCheck: false,
+      immutableCheck: false,
+    }).concat(logger),
 });
 
 const persistor = persistStore(store);

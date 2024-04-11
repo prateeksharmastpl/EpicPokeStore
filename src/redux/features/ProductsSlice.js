@@ -1,6 +1,6 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
 import createAxiosInstance from '../../api';
-import { CONSTANTS } from '../../constants/urls';
+import {CONSTANTS} from '../../constants/urls';
 
 const initialState = {
   products: [],
@@ -12,26 +12,26 @@ const initialState = {
 // All Products - API call
 export const getAllProducts = createAsyncThunk(
   'getAllProducts',
-  async (params,thunkAPI) => {
+  async (params, thunkAPI) => {
     try {
       const axiosInstance = createAxiosInstance();
-      const response = await axiosInstance.get(`${CONSTANTS.baseUrl}pokemon?limit=${params}`);
+      const response = await axiosInstance.get(
+        `${CONSTANTS.baseUrl}pokemon?limit=${params}`,
+      );
 
-      const productResponse = response.data.results; 
+      const productResponse = response.data.results;
 
-      const pokemonResponse = await Promise.all(productResponse.map(async (item) => {
-        // Call the pokemon API for each item
-        const res = await axiosInstance.get(item.url);
-        return res.data; // Return the response
-      }));
-      
+      const pokemonResponse = await Promise.all(
+        productResponse.map(async item => {
+          // Call the Pokémon API for each item
+          const res = await axiosInstance.get(item.url);
+          return res.data; // Return the response
+        }),
+      );
       return pokemonResponse;
     } catch (error) {
-      console.log(
-        '🚀 ~ file: ProductsSlice~ getAllProducts ~ error:',
-        error,
-      );
-      return thunkAPI.rejectWithValue({ error: error?.message });
+      console.log('🚀 ~ file: ProductsSlice~ getAllProducts ~ error:', error);
+      return thunkAPI.rejectWithValue({error: error?.message});
     }
   },
 );

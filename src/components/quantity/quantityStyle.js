@@ -1,11 +1,11 @@
+import {StyleSheet} from 'react-native';
 import {
-  StyleSheet,
-} from "react-native";
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import { COLORS } from "../../constants/colors"
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+import {COLORS} from '../../constants/colors';
 
-export const getQuantityStyles = (isDarkMode) => {
-
+export const getQuantityStyles = isDarkMode => {
   return StyleSheet.create({
     container: {
       borderColor: COLORS.accentColor,
@@ -14,9 +14,8 @@ export const getQuantityStyles = (isDarkMode) => {
       width: wp('30%'),
       borderRadius: 25,
       justifyContent: 'center',
-      alignItems: 'center',
       flexDirection: 'row',
-      marginEnd: wp(8)
+      marginEnd: wp(8),
     },
     titleStyle: {
       color: isDarkMode ? COLORS.primaryColor : COLORS.darkPrimaryColor,
@@ -33,7 +32,7 @@ export const getQuantityStyles = (isDarkMode) => {
       fontWeight: '400',
       fontSize: hp('1.8%'),
       marginEnd: wp(2),
-      color:  isDarkMode ? COLORS.primaryColor : COLORS.darkPrimaryColor,
+      color: isDarkMode ? COLORS.primaryColor : COLORS.darkPrimaryColor,
     },
   });
-} 
+};
