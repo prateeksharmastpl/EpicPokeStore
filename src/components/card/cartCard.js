@@ -3,8 +3,8 @@ import {
     Image,
     Text,
     View,
+    useColorScheme
 } from 'react-native';
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Quantity from '../quantity';
 import { getCartCardStyles } from './cartCardStyle';
 
@@ -19,9 +19,10 @@ function CartCard({
     quantity,
     price,
     onAddPress,
-    onRemovePress
+    onRemovePress,
 }) {
-    const styles = getCartCardStyles();
+    const isDarkMode = useColorScheme() === 'dark';
+    const styles = getCartCardStyles(isDarkMode);
 
     return (
         <View
@@ -41,12 +42,12 @@ function CartCard({
                 <Text style={priceStyle}>{`$${price}.00`}</Text>
             </View>
             <View style={styles.quantityContainer}>
-            <Quantity 
-             onAddPress={onAddPress}
-            onRemovePress={onRemovePress}
-            quantity={quantity}/>
+                <Quantity
+                    onAddPress={onAddPress}
+                    onRemovePress={onRemovePress}
+                    quantity={quantity} />
             </View>
-            
+
         </View>
     )
 }

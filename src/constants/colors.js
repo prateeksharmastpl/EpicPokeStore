@@ -1,11 +1,10 @@
 export const COLORS = {
     primaryColor : "#FFFFFF",
-    darkPrimaryColor : "#EEEEEE",
 
     //accent color for all kind of active buttons in the app. 
     accentColor: "#DB5B3E",
     //These colors are used for theme - Light/Dark
-    darkPrimaryColor:"#616161",
+    darkPrimaryColor:"#000000",
     lightPrimaryColor:"#F5F5F5",
 
     //primary text like titles, secondary colors like descrition etc.

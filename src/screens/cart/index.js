@@ -18,7 +18,8 @@ import { LocalString } from "../../constants/constantStrings"
 import CartCard from "../../components/card/cartCard"
 import Header from "../../components/header"
 import Button from "../../components/button"
-import {getCartStyles} from "./cartStyle"
+import { getCartStyles } from "./cartStyle"
+import { COLORS } from "../../constants/colors"
 import {
   addToCart,
   clearCart,
@@ -30,19 +31,55 @@ function Cart() {
   const isDarkMode = useColorScheme() === 'dark';
   const styles = getCartStyles(isDarkMode)
   const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.black : Colors.white,
+    backgroundColor: isDarkMode ? COLORS.darkPrimaryColor : COLORS.primaryColor,
   };
   const { popToTop } = useNavigation();
   const dispatch = useDispatch();
-  const {cartData, totalAmount} = useSelector(state => state.cartItems);
+  const { cartData, totalAmount } = useSelector(state => state.cartItems);
 
-  const handleCheckout = () => {
+
+  //handled checkout button press with useCallback hooks
+  const handleCheckout = useCallback(() => {
     Alert.alert('Order Success', 'Your order placed successfully', [
-      {text: 'OK', onPress: () => {
-        dispatch(clearCart());
-        popToTop()}},
+      {
+        text: 'OK', onPress: () => {
+          dispatch(clearCart());
+          popToTop()
+        }
+      },
     ]);
-  };
+  }, []);
+
+  //Add to cart action handled with useCallback hooks
+  const handleAddCartClick = useCallback((Product) => e => {
+    dispatch(addToCart(Product))
+  }, []);
+
+  //Remove item from cart action handled with useCallback hooks
+  const handleRemoveCartClick = useCallback((Product) => e => {
+    dispatch(removeFromCart(Product.id))
+  }, []);
+
+  //handled the CartCard component with useMemo to handle the unwanted rendering
+  const renderItem = useMemo(() => {
+    return ({ item, index }) => {
+      return (
+        <CartCard
+          url={`${CONSTANTS.imgBaseUrl}${item.id}.png`}
+          title={item.name}
+          containerStyle={styles.pikaContainer}
+          id={index}
+          imageStyle={styles.pikaImg}
+          quantity={item.quantity}
+          price={item.weight}
+          priceStyle={styles.priceStyle}
+          titleStyle={styles.titleStyle}
+          onRemovePress={handleRemoveCartClick(item)}
+          onAddPress={handleAddCartClick(item)}
+        />
+      );
+    };
+  }, []);
 
   return (
     <SafeAreaView style={backgroundStyle}>
@@ -55,39 +92,26 @@ function Cart() {
         <Header
           title={LocalString.cart}
           showBadge={true}
-          isBackButton={true}/>
+          isBackButton={true} />
         <View>
           <View style={styles.topContainer}>
-            {cartData.length==0 ? <View style={styles.emptyCartStyle}>
-              <SVGCart width={34} height={34}/>
+            {cartData.length == 0 ? <View style={styles.emptyCartStyle}>
+              <SVGCart width={34} height={34} />
               <Text style={styles.titleStyle}>{LocalString.emptyCart}</Text>
             </View> :
-          <FlatList
-            data={cartData}
-            keyExtractor={(item)=>item.id+item.name}
-            renderItem={({ item, index }) =>
-              <CartCard
-                url={`${CONSTANTS.imgBaseUrl}${item.id}.png`}
-                title={item.name}
-                containerStyle={styles.pikaContainer}
-                id={index}
-                imageStyle={styles.pikaImg}
-                quantity={item.quantity}
-                price={item.weight}
-                priceStyle={styles.priceStyle}
-                titleStyle={styles.titleStyle}
-                onRemovePress={()=>dispatch(removeFromCart(item.id))}
-                onAddPress={()=>dispatch(addToCart(item))}
+              <FlatList
+                data={cartData}
+                keyExtractor={(item) => item.id + item.name}
+                renderItem={renderItem}
               />}
-          />}
           </View>
           <View style={styles.bottomContainer}>
             <Text style={styles.totalTextStyle}>{`${LocalString.total}:`}</Text>
             <Text style={styles.priceStyle}>{`$${totalAmount}.00`}</Text>
-            {cartData.length!==0 && <Button 
-            onPress={handleCheckout}
-            containerStyle={styles.buttonContainerStyle}
-              title={LocalString.checkout.toUpperCase()}/>}
+            {cartData.length !== 0 && <Button
+              onPress={handleCheckout}
+              containerStyle={styles.buttonContainerStyle}
+              title={LocalString.checkout.toUpperCase()} />}
           </View>
         </View>
       </View>

@@ -1,7 +1,6 @@
-import React, { useEffect, useCallback, useMemo } from 'react';
+import React from 'react';
 import {
   StyleSheet,
-  View,
   Text,
   Pressable
 } from 'react-native';

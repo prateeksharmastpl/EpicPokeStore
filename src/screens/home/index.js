@@ -14,11 +14,11 @@ import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllProducts } from '../../redux/features/ProductsSlice';
 import { CONSTANTS } from "../../constants/urls"
-import {LocalString} from '../../constants/constantStrings'
+import { LocalString } from '../../constants/constantStrings'
 import ChildCard from "../../components/card"
 import Header from "../../components/header"
-import {getHomeStyles} from "./homeStyle";
-import {COLORS} from "../../constants/colors"
+import { getHomeStyles } from "./homeStyle";
+import { COLORS } from "../../constants/colors"
 
 function Home() {
   const isDarkMode = useColorScheme() === 'dark';
@@ -37,9 +37,37 @@ function Home() {
   /* useCallback to handle the callback from the ChildCard component
   ** it helps to handle the unwanted rerending 
   */
-  const handleCardClick=(item)=>{
-    navigate('ProductDetail', {Product: item})
-  }
+  const handleCardClick = useCallback((item) => e => {
+    navigate('ProductDetail', { Product: item })
+  }, []);
+
+  //handled the child card component with useMemo to handle the unwanted rendering
+  const renderItem = useMemo(() => {
+    return ({ item }) => {
+      return (
+        <ChildCard
+          onPress={handleCardClick(item)}
+          url={`${CONSTANTS.imgBaseUrl}${item.id}.png`}
+          title={item.name}
+          containerStyle={styles.pikaContainer}
+          subContainerStyle={styles.subContainerStyle}
+          id={item.id + item.name}
+          titleStyle={styles.titleStyle}
+          imageStyle={styles.pikaImg}
+          showTitle={true}
+        />
+      );
+    };
+  }, []);
+
+  const handleHeader = useMemo(() => {
+      return (
+        <Header
+        title={LocalString.appName}
+        showBadge={true}
+        showCart={true} />
+      );
+  }, []);
 
   return (
     <SafeAreaView style={backgroundStyle}>
@@ -47,36 +75,16 @@ function Home() {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? COLORS.darkPrimaryColor : COLORS.lightPrimaryColor,
-            paddingBottom: Platform.OS === "ios" ?  hp("5%") : hp("8%"),
-            justifyContent:'center',
-            alignItems:'center'
-          }}>
-          <Header 
-          title={LocalString.appName}
-          showBadge={true}
-          showCart={true}/>
-          
-          <FlatList
-            data={products}
-            numColumns={3}
-            keyExtractor={(item)=>item.id+item.name}
-            renderItem={({ item, index }) =>
-              <ChildCard
-                onPress={()=>handleCardClick(item)}
-                url={`${CONSTANTS.imgBaseUrl}${item.id}.png`}
-                title={item.name}
-                containerStyle={styles.pikaContainer}
-                subContainerStyle={styles.subContainerStyle}
-                id={index}
-                titleStyle={styles.titleStyle}
-                imageStyle={styles.pikaImg}
-                showTitle={true}
-              />}
-          />
-        </View>
+      <View
+        style={styles.constainer}>
+        {handleHeader}
+        <FlatList
+          data={products}
+          numColumns={3}
+          keyExtractor={(item) => item.id + item.name}
+          renderItem={renderItem}
+        />
+      </View>
     </SafeAreaView>
   );
 }

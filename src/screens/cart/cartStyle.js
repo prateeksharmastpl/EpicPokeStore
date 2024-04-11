@@ -10,7 +10,7 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 export const getCartStyles = (isDarkMode) => {
   return StyleSheet.create({
     container: {
-      backgroundColor: isDarkMode ? Colors.dark : Colors.light,
+      backgroundColor: isDarkMode ? COLORS.darkPrimaryColor : COLORS.primaryColor,
       paddingBottom: Platform.OS === "ios" ? hp("5%") : hp("8%"),
       alignItems: 'center',
       width: wp('100%'),
@@ -24,7 +24,7 @@ export const getCartStyles = (isDarkMode) => {
     },
     pikaContainer: {
       flexDirection: 'row',
-      backgroundColor: 'white',
+      backgroundColor: isDarkMode ? Colors.dark : Colors.light,
       borderRadius: 8,
       marginVertical: 5,
       width: wp("95%"),
@@ -36,13 +36,13 @@ export const getCartStyles = (isDarkMode) => {
       textTransform: 'capitalize',
       fontWeight: '500',
       fontSize: hp('1.6%'),
-      color:COLORS.primaryTextColor
+      color:isDarkMode ? COLORS.primaryColor : COLORS.darkPrimaryColor,
     },
     titleStyle:{
       textTransform: 'capitalize',
       fontWeight: '500',
       fontSize: hp('1.6%'),
-      color:COLORS.primaryTextColor
+      color:isDarkMode ? COLORS.primaryColor : COLORS.darkPrimaryColor,
     },
     priceStyle: {
       color: COLORS.accentColor,
@@ -63,7 +63,7 @@ export const getCartStyles = (isDarkMode) => {
     },
     bottomContainer: {
       height: hp("25%"),
-      backgroundColor: COLORS.primaryColor,
+      backgroundColor: isDarkMode ? COLORS.darkPrimaryColor : COLORS.primaryColor,
       marginTop: hp(2),
       borderTopLeftRadius: 8,
       borderTopRightRadius: 8,

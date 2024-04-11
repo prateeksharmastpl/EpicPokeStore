@@ -4,7 +4,9 @@ import {
     View,
     Text,
     Pressable,
+    useColorScheme
 } from 'react-native';
+
 import SVGAdd from '../../assets/svg/ic_plus_circle.svg'
 import SVGRemove from '../../assets/svg/ic_minus_circle.svg'
 import {getQuantityStyles} from './quantityStyle'
@@ -15,7 +17,8 @@ function Quantity({
     onAddPress,
     onRemovePress,
     showQuantityLable }) {
-        const styles = getQuantityStyles();
+        const isDarkMode = useColorScheme() === 'dark';
+        const styles = getQuantityStyles(isDarkMode);
     return (
         <>
             <View style={styles.container}>

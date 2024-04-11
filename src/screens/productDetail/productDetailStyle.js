@@ -13,7 +13,7 @@ export const getProductDetailStyle = (isDarkMode) => {
         resizeMode: "contain",
       },
       pikaContainer: {
-        backgroundColor: COLORS.lightPrimaryColor,
+        backgroundColor: isDarkMode ? COLORS.darkPrimaryColor : COLORS.lightPrimaryColor,
         alignItems: 'center',
         height: hp('40%'),
         width: wp('100%')
@@ -27,7 +27,8 @@ export const getProductDetailStyle = (isDarkMode) => {
         textTransform: 'capitalize',
         fontWeight: '400',
         marginTop: hp(1),
-        fontSize: hp('2.2%')
+        fontSize: hp('2.2%'),
+        color: isDarkMode ? COLORS.primaryColor : COLORS.darkPrimaryColor,
       },
       priceTextStyle: {
         textTransform: 'capitalize',
@@ -41,13 +42,13 @@ export const getProductDetailStyle = (isDarkMode) => {
         marginTop: hp(2),
         fontWeight: '400',
         fontSize: hp('1.8%'),
-        color: COLORS.secondaryTextColor
+        color: isDarkMode ? COLORS.primaryColor : COLORS.darkPrimaryColor,
       },
       titleT2Style: {
         marginTop: hp("2%"),
         fontWeight: '400',
         fontSize: hp('1.8%'),
-        color: COLORS.primaryTextColor
+        color: isDarkMode ? COLORS.primaryColor : COLORS.darkPrimaryColor,
       },
       dividerStyle: {
         height: 1,

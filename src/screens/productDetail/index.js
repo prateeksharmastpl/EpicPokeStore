@@ -23,7 +23,7 @@ import { getProductDetailStyle } from './productDetailStyle'
 
 function ProductDetail() {
   const isDarkMode = useColorScheme() === 'dark';
-  const styles = getProductDetailStyle();
+  const styles = getProductDetailStyle(isDarkMode);
 
   const [currentItem, setCurrentItem] = useState({});
   const {
@@ -52,6 +52,16 @@ function ProductDetail() {
     };
     itemChecking();
   }, [cartData]);
+
+  //Add to cart action handled with useCallback hooks
+  const handleAddCartClick = useCallback((Product) => e => {
+    dispatch(addToCart(Product))
+  }, []);
+
+  //Remove item from cart action handled with useCallback hooks
+  const handleRemoveCartClick = useCallback((Product) => e => {
+    dispatch(removeFromCart(Product.id))
+  }, []);
 
   return (
     <SafeAreaView style={backgroundStyle}>
@@ -90,16 +100,13 @@ function ProductDetail() {
               once we remove all the quantity on the Add to Cart button will show*/}
               {currentItem.quantity > 0 ? <Quantity
               showQuantityLable={true}
-                onAddPress={() => {
-                  dispatch(addToCart(Product))}}
-                onRemovePress={() => {
-                  dispatch(removeFromCart(Product.id))}}
+                onAddPress={handleAddCartClick(Product)}
+                onRemovePress={handleRemoveCartClick(Product)}
                 quantity={currentItem.quantity}
               />: 
               <Button 
               title={LocalString.addToCart.toUpperCase()}
-              onPress={() => {
-                dispatch(addToCart(Product))}} />}
+              onPress={handleAddCartClick(Product)} />}
 
             </View>
           </View>

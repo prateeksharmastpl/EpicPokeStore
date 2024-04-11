@@ -9,7 +9,7 @@ const initialState = {
   isError: false,
 };
 
-// All Products
+// All Products - API call
 export const getAllProducts = createAsyncThunk(
   'getAllProducts',
   async (params,thunkAPI) => {

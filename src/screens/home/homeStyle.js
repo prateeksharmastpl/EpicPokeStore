@@ -5,10 +5,17 @@ import {
     Colors,
 } from 'react-native/Libraries/NewAppScreen';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { COLORS } from "../../constants/colors";
 
 export const getHomeStyles = (isDarkMode) => {
 
     return StyleSheet.create({
+        constainer:{
+          backgroundColor: isDarkMode ? COLORS.darkPrimaryColor : COLORS.lightPrimaryColor,
+          paddingBottom: Platform.OS === "ios" ? hp("5%") : hp("8%"),
+          justifyContent: 'center',
+          alignItems: 'center'
+        },
         pikaImg: {
             height: '60%',
             width: '100%',

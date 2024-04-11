@@ -4,7 +4,7 @@ import {
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { COLORS } from "../../constants/colors"
 
-export const getQuantityStyles = () => {
+export const getQuantityStyles = (isDarkMode) => {
 
   return StyleSheet.create({
     container: {
@@ -19,7 +19,7 @@ export const getQuantityStyles = () => {
       marginEnd: wp(8)
     },
     titleStyle: {
-      color: COLORS.primaryColor
+      color: isDarkMode ? COLORS.primaryColor : COLORS.darkPrimaryColor,
     },
     pressableStyle: {
       padding: 5,
@@ -27,13 +27,13 @@ export const getQuantityStyles = () => {
     signStyle: {
       fontSize: hp(2),
       marginHorizontal: wp(2),
-      color: COLORS.primaryTextColor
+      color: isDarkMode ? COLORS.primaryColor : COLORS.darkPrimaryColor,
     },
     quantityTitle: {
       fontWeight: '400',
       fontSize: hp('1.8%'),
       marginEnd: wp(2),
-      color: COLORS.primaryTextColor
+      color:  isDarkMode ? COLORS.primaryColor : COLORS.darkPrimaryColor,
     },
   });
 } 

@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React,{useCallback} from 'react';
 import {
     Text,
     View,
@@ -22,15 +22,23 @@ function Header({
     const styles = getHeaderStyles(isDarkMode)
     const { cartData } = useSelector(state => state.cartItems);
 
+    const handleCartClick = useCallback(()=> {
+        navigate('Cart')
+    }, []);
+
+    const handleBackClick = useCallback(()=> {
+        goBack()
+    }, []);
+
     return (
         <View style={styles.container}>
-            {isBackButton && <Pressable onPress={()=>goBack()} style={styles.pressableLeftView}>
+            {isBackButton && <Pressable onPress={handleBackClick} style={styles.pressableLeftView}>
                 <SVGBack width={22} height={22} fill={COLORS.accentColor}/> 
             </Pressable>}
 
             <Text style={styles.titleStyle}>{title}</Text>
 
-            {showCart && <Pressable onPress={()=>navigate('Cart')} style={styles.pressableRightView}>
+            {showCart && <Pressable onPress={handleCartClick} style={styles.pressableRightView}>
                 <SVGCart width={24} height={24} /> 
                 {cartData && cartData.length>0 && <View style={styles.badgeView}></View>}
             </Pressable>}
