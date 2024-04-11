@@ -78,3 +78,13 @@ To learn more about React Native, take a look at the following resources:
 - [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
 - [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+
+Application screens - 
+![Simulator Screenshot - iPhone 15 - 2024-04-11 at 09 59 14](https://github.com/prateeksharmastpl/EpicPokeStore/assets/3941119/2950d7d9-b7c2-45df-8313-164751419097)
+![Simulator Screenshot - iPhone 15 - 2024-04-11 at 09 59 21](https://github.com/prateeksharmastpl/EpicPokeStore/assets/3941119/807efdc5-c4aa-410a-9d51-c3415e5ff028)
+![Simulator Screenshot - iPhone 15 - 2024-04-11 at 09 59 33](https://github.com/prateeksharmastpl/EpicPokeStore/assets/3941119/6bd1d70c-1655-4176-8f44-d6a57b014507)
+![Simulator Screenshot - iPhone 15 - 2024-04-11 at 09 59 40](https://github.com/prateeksharmastpl/EpicPokeStore/assets/3941119/65452c09-679f-4be6-bc70-9585ce378054)
+![Simulator Screenshot - iPhone 15 - 2024-04-11 at 09 59 52](https://github.com/prateeksharmastpl/EpicPokeStore/assets/3941119/e33e3ce1-2f39-4411-82b7-e6cb4fcc9737)
+![Simulator Screenshot - iPhone 15 - 2024-04-11 at 10 00 01](https://github.com/prateeksharmastpl/EpicPokeStore/assets/3941119/7dab10ee-b0e6-43ff-b06e-1a25824271bb)
+![Simulator Screenshot - iPhone 15 - 2024-04-11 at 10 00 09](https://github.com/prateeksharmastpl/EpicPokeStore/assets/3941119/204594e9-c4a5-43e0-bb45-817b9e6c0670)
+
