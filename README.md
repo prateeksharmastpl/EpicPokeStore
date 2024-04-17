@@ -85,7 +85,7 @@ This is one way to run your app — you can also run it directly from within And
 
 
 
-#Dark theme
+# Dark theme
 ![Simulator Screenshot - iPhone 15 - 2024-04-11 at 21 14 17](https://github.com/prateeksharmastpl/EpicPokeStore/assets/3941119/2c8f0d1c-a5e4-430b-9507-d88a4f62f10e)
 ![Simulator Screenshot - iPhone 15 - 2024-04-11 at 21 14 29](https://github.com/prateeksharmastpl/EpicPokeStore/assets/3941119/05793dd5-98a2-451f-aa58-43b2d16fba2a)
 ![Simulator Screenshot - iPhone 15 - 2024-04-11 at 21 14 51](https://github.com/prateeksharmastpl/EpicPokeStore/assets/3941119/8fd7e582-f26c-4daa-9bb0-10c78c1c5adb)
