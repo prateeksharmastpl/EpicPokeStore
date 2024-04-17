@@ -70,6 +70,6 @@ This is one way to run your app — you can also run it directly from within And
 
 
 
-<img src="[[relative/path/in/repository/to/image.svg](https://github.com/prateeksharmastpl/EpicPokeStore/assets/3941119/2c8f0d1c-a5e4-430b-9507-d88a4f62f10e)](https://github.com/prateeksharmastpl/EpicPokeStore/assets/3941119/2c8f0d1c-a5e4-430b-9507-d88a4f62f10e)" width="128"/>
+<img src="[Simulator Screenshot - iPhone 15 - 2024-04-11 at 21 14 17](https://github.com/prateeksharmastpl/EpicPokeStore/assets/3941119/2c8f0d1c-a5e4-430b-9507-d88a4f62f10e)" width="128"/>
 
 
